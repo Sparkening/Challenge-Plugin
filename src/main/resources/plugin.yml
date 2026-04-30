@@ -1,0 +1,6 @@
+name: Challenges-plugin
+version: '${version}'
+
+main: tv.sparkening.challengesplugin.ChallengesPlugin
+api-version: '26.1.2'
+load: POSTWORLD
