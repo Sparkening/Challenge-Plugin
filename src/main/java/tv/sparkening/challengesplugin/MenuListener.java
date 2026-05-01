@@ -23,7 +23,7 @@ public class MenuListener implements Listener {
             //close menu if redstone/ slot0 was selected
             if (event.getRawSlot() == 0) {
                 player.closeInventory();
-                ChallengesPlugin.isRouletteActive = true;
+                ChallengesPlugin.activeChallenge = "DamageRoulette";
 
             }
         }

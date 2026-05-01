@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public final class ChallengesPlugin extends JavaPlugin {
 
-    public static boolean isRouletteActive = false;
+    public static String activeChallenge = null;
     public static int rouletteTimeElapsed = 0;
 
     @Override
@@ -19,22 +19,19 @@ public final class ChallengesPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
 
         // Timer
-        getServer().getScheduler().runTaskTimer(this, new Runnable() {
-            @Override
-            public void run() {
+        getServer().getScheduler().runTaskTimer(this, () -> {
 
-                if (isRouletteActive) {
-                    rouletteTimeElapsed++; // Add 1 to the clock
+            if (Objects.equals(ChallengesPlugin.activeChallenge, "DamageRoulette")) {
+                rouletteTimeElapsed++; // Add 1 to the clock
 
-                    // Loop through all online players
-                    for (Player player : getServer().getOnlinePlayers()) {
+                // Loop through all online players
+                for (Player player : getServer().getOnlinePlayers()) {
 
-                        // Send them the action bar message
-                        player.sendActionBar(net.kyori.adventure.text.Component.text("Time: " + rouletteTimeElapsed + "s"));
-                    }
+                    // Send them the action bar message
+                    player.sendActionBar(net.kyori.adventure.text.Component.text("Time: " + rouletteTimeElapsed + "s"));
                 }
-
             }
+
         }, 0L, 20L); // 0L means start immediately, 20L means repeat every 20 ticks (1 second)
     }
 

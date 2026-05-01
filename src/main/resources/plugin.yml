@@ -9,3 +9,7 @@ commands:
   challenge:
     description: Opens the challenge selector menu.
     usage: /challenge
+
+  timer:
+    description: allows control over the timer
+    usage: /timer

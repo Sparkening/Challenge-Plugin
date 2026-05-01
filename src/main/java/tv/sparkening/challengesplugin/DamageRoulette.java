@@ -5,11 +5,13 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDamageEvent;
 
+import java.util.Objects;
+
 public class DamageRoulette implements Listener {
 
     @EventHandler
     public void onPlayerDamage(EntityDamageEvent event) {
-        if (ChallengesPlugin.isRouletteActive) {
+        if (Objects.equals(ChallengesPlugin.activeChallenge, "DamageRoulette")) {
             if (event.getEntity() instanceof Player player) {
                 org.bukkit.Location dropLocation = player.getLocation();
 
