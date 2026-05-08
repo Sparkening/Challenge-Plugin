@@ -11,5 +11,5 @@ commands:
     usage: /challenge
 
   timer:
-    description: allows control over the timer
+    description: Allows control over the timer
     usage: /timer
