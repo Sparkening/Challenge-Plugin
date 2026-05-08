@@ -8,27 +8,52 @@ import java.util.Objects;
 public final class ChallengesPlugin extends JavaPlugin {
 
     public static String activeChallenge = null;
-    public static int rouletteTimeElapsed = 0;
+    public static int TimeElapsed = 0;
+    public static boolean isActive = true;
 
     @Override
     public void onEnable() {
         getServer().getPluginManager().registerEvents(new DamageRoulette(), this);
 
-        // Register our new command and menu listener too!
+        // Registers the commands
         Objects.requireNonNull(getCommand("challenge")).setExecutor(new ChallengeCommand());
+        Objects.requireNonNull(getCommand("timer")).setExecutor(new TimerCommand());
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
 
         // Timer
         getServer().getScheduler().runTaskTimer(this, () -> {
 
-            if (Objects.equals(ChallengesPlugin.activeChallenge, "DamageRoulette")) {
-                rouletteTimeElapsed++; // Add 1 to the clock
+            if (ChallengesPlugin.activeChallenge != null && ChallengesPlugin.isActive) {
+                TimeElapsed++; // Add 1 to the clock
+
+                int seconds = TimeElapsed % 60;
+                int totalMinutes = TimeElapsed / 60;
+
+                int totalHours = totalMinutes / 60;
+                int totalDays = totalHours / 24;
+
+                int minutes = totalMinutes % 60;
+                int hours = totalHours % 24;
 
                 // Loop through all online players
                 for (Player player : getServer().getOnlinePlayers()) {
 
                     // Send them the action bar message
-                    player.sendActionBar(net.kyori.adventure.text.Component.text("Time: " + rouletteTimeElapsed + "s"));
+                    String timeMessage = "";
+                    if (totalDays > 0) {
+                        timeMessage += totalDays + "d ";
+                    }
+                    if (hours > 0) {
+                        timeMessage += hours + "h ";
+                    }
+                    if (minutes >= 0) {
+                        timeMessage += minutes + "m ";
+                    }
+                    if (seconds >= 0) {
+                        timeMessage += seconds + "s";
+                    }
+
+                    player.sendActionBar(net.kyori.adventure.text.Component.text(timeMessage));
                 }
             }
 

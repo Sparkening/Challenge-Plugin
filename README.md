@@ -13,11 +13,16 @@ A custom PaperMC server plugin built to recreate "Minecraft, but..." style chall
     * Drops a random Item whenever the player takes any damage
 * *More to be introduced!*
 
-## General Features
+## 💡 General Features
 
 * Custom UI for challenge Selection
     * can be opened with the /challenge command
+
+
 * Timer function with simple commands
+    * /timer pause
+    * /timer resume
+    * /timer stop
 
 ## 🛠️ Setup - If there's no release available
 

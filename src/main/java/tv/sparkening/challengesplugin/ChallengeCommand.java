@@ -20,7 +20,7 @@ public class ChallengeCommand implements CommandExecutor {
                     ChallengesPlugin.activeChallenge = null;
                     player.sendMessage(net.kyori.adventure.text.Component.text("Challenge stopped!"));
 
-                    ChallengesPlugin.rouletteTimeElapsed = 0;
+                    ChallengesPlugin.TimeElapsed = 0;
                 }
             } else {
                 // Initialize the menu one line of 9 items with the name Challenge-Selector
