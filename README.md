@@ -17,6 +17,10 @@ A custom PaperMC server plugin built to recreate "Minecraft, but..." style chall
 
 * Custom UI for challenge Selection
     * can be opened with the /challenge command
+* Save States using SQlite
+
+
+* Hub world for save start and reset of challenges and their world
 
 
 * Timer function with simple commands

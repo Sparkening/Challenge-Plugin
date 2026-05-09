@@ -13,6 +13,9 @@ public final class ChallengesPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        org.bukkit.WorldCreator hubCreator = new org.bukkit.WorldCreator("challenge_hub"); //hub world definition
+        getServer().createWorld(hubCreator); //generate / load hub world
+
         getServer().getPluginManager().registerEvents(new DamageRoulette(), this);
 
         // Registers the commands
